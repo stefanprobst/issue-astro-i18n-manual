@@ -1,0 +1,21 @@
+---
+import { defaultLocale } from "../config/i18n.config";
+
+const locale = Astro.currentLocale ?? defaultLocale;
+
+/** Middleware does not seem to work when this is set to `true`. */
+export const prerender = true;
+---
+
+<html lang={locale}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>404</title>
+	</head>
+	<body>
+		<h1 style={{ color: "red" }}>404</h1>
+		<pre>Locale: {locale}</pre>
+	</body>
+</html>

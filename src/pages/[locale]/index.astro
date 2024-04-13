@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro";
+
+import { locales } from "../../config/i18n.config";
+
+export const getStaticPaths = (() => {
+  return locales.map((locale) => {
+    return { params: { locale } };
+  });
+}) satisfies GetStaticPaths;
+
+const locale = Astro.currentLocale;
+---
+
+<html lang={locale}>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1>Astro</h1>
+		<pre>Locale: {locale}</pre>
+	</body>
+</html>
